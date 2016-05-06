@@ -3,7 +3,7 @@ default['ceph']['branch'] = 'stable' # Can be stable, testing or dev.
 default['ceph']['version'] = 'firefly'
 default['ceph']['el_add_epel'] = true
 default['ceph']['repo_url'] = 'http://ceph.com'
-default['ceph']['extras_repo_url'] = 'http://ceph.com/packages/ceph-extras'
+default['ceph']['extras_repo_url'] = 'http://download.ceph.com'
 default['ceph']['extras_repo'] = false
 
 case node['platform_family']
@@ -19,14 +19,14 @@ when 'debian'
   default['ceph']['debian']['extras']['repository_key'] = 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc'
 when 'rhel'
   # Redhat/CentOS default repositories
-  default['ceph']['rhel']['stable']['repository'] = "#{node['ceph']['repo_url']}/rpm-#{node['ceph']['version']}/el6/x86_64/"
-  default['ceph']['rhel']['stable']['repository_key'] = 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc'
-  default['ceph']['rhel']['testing']['repository'] = "#{node['ceph']['repo_url']}/rpm-testing/el6/x86_64/"
-  default['ceph']['rhel']['testing']['repository_key'] = 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc'
+  default['ceph']['rhel']['stable']['repository'] = "#{node['ceph']['repo_url']}/rpm-#{node['ceph']['version']}/el7/x86_64/"
+  default['ceph']['rhel']['stable']['repository_key'] = "#{node['ceph']['repo_url']}/keys/release.asc"
+  default['ceph']['rhel']['testing']['repository'] = "#{node['ceph']['repo_url']}/rpm-testing/el7/x86_64/"
+  default['ceph']['rhel']['testing']['repository_key'] = "#{node['ceph']['repo_url']}/keys/release.asc"
   default['ceph']['rhel']['dev']['repository'] = "http://gitbuilder.ceph.com/ceph-rpm-centos6-x86_64-basic/ref/#{node['ceph']['version']}/x86_64/"
-  default['ceph']['rhel']['dev']['repository_key'] = 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/autobuild.asc'
-  default['ceph']['rhel']['extras']['repository'] = "#{node['ceph']['extras_repo_url']}/rpm/rhel6/x86_64/"
-  default['ceph']['rhel']['extras']['repository_key'] = 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc'
+  default['ceph']['rhel']['dev']['repository_key'] = "#{node['ceph']['repo_url']}/keys/autobuild.asc"
+  default['ceph']['rhel']['extras']['repository'] = "#{node['ceph']['extras_repo_url']}/rpm/rhel7/x86_64/"
+  default['ceph']['rhel']['extras']['repository_key'] = "#{node['ceph']['repo_url']}/keys/release.asc"
 when 'fedora'
   # Fedora default repositories
   default['ceph']['fedora']['stable']['repository'] = "#{node['ceph']['repo_url']}/rpm-#{node['ceph']['version']}/fc#{node['platform_version']}/x86_64/"
