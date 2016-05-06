@@ -11,11 +11,13 @@ when 'ubuntu'
 when 'rhel', 'centos'
   if node['platform_version'] >= 7
     default['ceph']['init_style'] = 'systemd'
+  end
 when 'fedora'
   if node['platform_version'] >= 15
     default['ceph']['init_style'] = 'systemd'
   else
     default['ceph']['init_style'] = 'upstart'
+  end
 else
   default['ceph']['init_style'] = 'sysvinit'
 end
