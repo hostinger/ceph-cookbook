@@ -138,6 +138,9 @@ else
       when 'upstart'
         service_name 'ceph-osd-all-starter'
         provider Chef::Provider::Service::Upstart
+      when 'systemd'
+        service_name 'ceph-mon.target'
+        provider Chef::Provider::Service::Systemd
       else
         service_name 'ceph'
       end

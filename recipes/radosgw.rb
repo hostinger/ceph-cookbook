@@ -68,6 +68,9 @@ service 'radosgw' do
   when 'upstart'
     service_name 'radosgw-all-starter'
     provider Chef::Provider::Service::Upstart
+  when 'systemd'
+    service_name 'ceph-radosgw.target'
+    provider Chef::Provider::Service::Systemd
   else
     if node['platform'] == 'debian'
       service_name 'radosgw'
