@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
   (0..2).each do |d|
     config.vm.provider :virtualbox do |vb|
       vb.customize [ "createhd", "--filename", "disk-#{d}", "--size", "1000" ]
-      vb.customize [ "storageattach", :id, "--storagectl", "IDE Controller", "--device", (1+d)/2, "--port", (1+d)%2, "--type", "hdd", "--medium", "disk-#{d}.vdi" ]
+      vb.customize [ "storageattach", :id, "--storagectl", "SATA Controller", "--device", 0, "--port", 5+d, "--type", "hdd", "--medium", "disk-#{d}.vdi" ]
     end
   end
 end
