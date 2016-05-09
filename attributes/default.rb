@@ -9,11 +9,11 @@ case node['platform']
 when 'ubuntu'
   default['ceph']['init_style'] = 'upstart'
 when 'rhel', 'centos'
-  if node['platform_version'] >= 7
+  if node['platform_version'].to_f >= 7
     default['ceph']['init_style'] = 'systemd'
   end
 when 'fedora'
-  if node['platform_version'] >= 15
+  if node['platform_version'].to_f >= 15
     default['ceph']['init_style'] = 'systemd'
   else
     default['ceph']['init_style'] = 'upstart'
