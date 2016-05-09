@@ -17,8 +17,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.default['ceph']['extras_repo'] = true
-
 case node['platform_family']
 when 'debian'
   packages = %w(

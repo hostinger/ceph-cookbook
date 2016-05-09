@@ -15,12 +15,6 @@ yum_repository 'ceph' do
   gpgkey node['ceph'][platform_family][branch]['repository_key']
 end
 
-yum_repository 'ceph-extra' do
-  baseurl node['ceph'][platform_family]['extras']['repository']
-  gpgkey node['ceph'][platform_family]['extras']['repository_key']
-  only_if { node['ceph']['extras_repo'] }
-end
-
 package 'parted'    # needed by ceph-disk-prepare to run partprobe
 package 'hdparm'    # used by ceph-disk activate
 package 'xfsprogs'  # needed by ceph-disk-prepare to format as xfs

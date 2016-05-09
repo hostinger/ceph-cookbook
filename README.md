@@ -107,7 +107,6 @@ Ceph Rados Gateway nodes should use the ceph-radosgw role
 * `node['ceph']['search_environment']` - a custom Chef environment to search when looking for mon nodes. The cookbook defaults to searching the current environment
 * `node['ceph']['branch']` - selects whether to install the stable, testing, or dev version of Ceph
 * `node['ceph']['version']` - install a version of Ceph that is different than the cookbook default. If this is changed in a wrapper cookbook, some repository urls may also need to be replaced, and they are found in attributes/repo.rb. If the branch attribute is set to dev, this selects the gitbuilder branch to install
-* `node['ceph']['extras_repo']` - whether to install the ceph extras repo. The tgt recipe requires this
 
 * `node['ceph']['config']['fsid']` - the cluster UUID
 * `node['ceph']['config']['global']['public network']` - a CIDR specification of the public network
