@@ -61,6 +61,9 @@ service 'ceph_mds' do
   when 'upstart'
     service_name 'ceph-mds-all-starter'
     provider Chef::Provider::Service::Upstart
+  when 'systemd'
+    service_name 'ceph-mds.target'
+    provider Chef::Provider::Service::Systemd
   else
     service_name 'ceph'
   end
